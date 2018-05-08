@@ -1,0 +1,184 @@
+{
+  "title": "myVim",
+  "rules": [
+    {
+      "description": "myVIM",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "open_bracket",
+            "modifiers": {
+              "mandatory": ["left_control"],
+              "optional": [
+                  "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "isVI",
+                "value": 1
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "isVI",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "open_bracket",
+            "modifiers": {
+              "mandatory": ["left_control"],
+              "optional": [
+                 "any" 
+              ]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "isVI",
+                "value": 0
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "isVI",
+              "value": 1
+            }
+          ]
+        },
+         {
+        "type": "basic",
+        "from": {
+            "key_code": "j",
+            "modifiers": {
+                "mandatory": [],
+                "optional": [
+                    "any"
+                ]
+            }
+        },
+        "to": [
+            {
+                "key_code": "down_arrow"
+            }
+        ],
+        "conditions": [
+            {
+                "type": "variable_if",
+                "name": "isVI",
+                "value": 1
+            }
+          ]
+       },
+        {
+        "type": "basic",
+        "from": {
+            "key_code": "k",
+            "modifiers": {
+                "mandatory": [],
+                "optional": [
+                    "any"
+                ]
+            }
+        },
+        "to": [
+            {
+                "key_code": "up_arrow"
+            }
+        ],
+        "conditions": [
+            {
+                "type": "variable_if",
+                "name": "isVI",
+                "value": 1
+            }
+          ]
+       },
+        {
+        "type": "basic",
+        "from": {
+            "key_code": "h",
+            "modifiers": {
+                "mandatory": [],
+                "optional": [
+                    "any"
+                ]
+            }
+        },
+        "to": [
+            {
+                "key_code": "left_arrow"
+            }
+        ],
+        "conditions": [
+            {
+                "type": "variable_if",
+                "name": "isVI",
+                "value": 1
+            }
+          ]
+       },
+        {
+        "type": "basic",
+        "from": {
+            "key_code": "l",
+            "modifiers": {
+                "mandatory": [],
+                "optional": [
+                    "any"
+                ]
+            }
+        },
+        "to": [
+            {
+                "key_code": "right_arrow"
+            }
+        ],
+        "conditions": [
+            {
+                "type": "variable_if",
+                "name": "isVI",
+                "value": 1
+            }
+          ]
+       },
+         {
+        "type": "basic",
+        "from": {
+            "key_code": "x",
+            "modifiers": {
+                "mandatory": [],
+                "optional": [
+                    "any"
+                ]
+            }
+        },
+        "to": [
+            {
+                "key_code": "delete_or_backspace"
+            }
+        ],
+        "conditions": [
+            {
+                "type": "variable_if",
+                "name": "isVI",
+                "value": 1
+            }
+          ]
+       }
+      ]
+    }
+  ]
+}
