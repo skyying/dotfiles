@@ -1,9 +1,12 @@
-### Karabiner VIM Style keyboard setup 
+##### Mapping list 
 
-Switch Between VI Mode
-    Ctrl-[ (control + [)
+By import this file in karabrine's complex modification or put it in the following path
 
-Mapping list (key A, map to Key B)
+    ~/.config/karabrine/assets/complex_modifications
+
+###### key mapping
+
+    <ctrl-[>, swtich between vi mode 
     j, arrow down
     k, arrow up
     l, arrow right
