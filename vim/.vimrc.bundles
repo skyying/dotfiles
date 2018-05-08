@@ -1,8 +1,3 @@
-" Plugins here are part of the CORE Maximum Awesome setup
-" Do NOT add bundles to this list, as they might get removed when you upgrade
-" Maximum Awesome.
-" Please create ~/.vimrc.bundles.local and add any extra bundles you want there
-" Plugin 'honza/vim-snippets'
 Bundle 'takac/vim-hardtime'
 Plugin 'SirVer/ultisnips'
 Plugin 'wikitopian/hardmode'
@@ -12,9 +7,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'rking/ag.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'pangloss/vim-javascript'
-"Plugin 'wookiehangover/jshint.vim'
 Plugin 'scrooloose/nerdtree'
-"Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-ragtag'
