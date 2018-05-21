@@ -65,14 +65,14 @@ let mapleader = ' '
 " inoremap <C-s> <ESC>:w<CR>
 
 "format code"
-noremap <C-f> maggvG=jj`a
+noremap <C-f> maggvG=jk`a
 
 "scrolling effect"
 noremap <C-e> 3<C-e>
 noremap <C-y> 3<C-y>
 
 "remap <ESC> key
-inoremap jj <ESC>
+inoremap jk <ESC>
 
 
 
@@ -160,7 +160,7 @@ if filereadable(expand("~/.vimrc.local"))
     " set whichwrap+=<,>,h,l,[,] " Wrap arrow keys between lines
     "
     " autocmd! bufwritepost .vimrc source ~/.vimrc
-    " noremap! jj <ESC>
+    " noremap! jk <ESC>
     source ~/.vimrc.local
 endif
 
