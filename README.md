@@ -1,11 +1,11 @@
-### configs
+### dotfiles
 
-#### vimrc and tmux.conf
+#### ~/.vimrc and ~/.tmux.conf
 
-My .vimrc and .tmux.conf are modified based on [maximum awesome](https://github.com/square/maximum-awesome)
+My ~/.vimrc and ~/.tmux.conf are modified based on [maximum awesome](https://github.com/square/maximum-awesome)
 
      - different color theme
-     - remap jj to <Esc>
+     - remap jk to <Esc>
      - <Space> as leader key for vim 
      - <Ctrl-a> as leader key for tmux
      - ...
