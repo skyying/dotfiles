@@ -1,8 +1,14 @@
+
 "-------------------------------------------------
 "Learning VIM
 "-------------------------------------------------
 Plugin 'takac/vim-hardtime'
 Plugin 'wikitopian/hardmode'
+
+"-------------------------------------------------
+"Color scheme
+"-------------------------------------------------
+Plugin 'crusoexia/vim-monokai'
 
 "-------------------------------------------------
 "Plugin Management
@@ -25,19 +31,28 @@ Plugin 'junegunn/fzf'
 "-------------------------------------------------
 "tmux, terminal
 "-------------------------------------------------
-Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'benmills/vimux'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'epeli/slimux'
 
 "-------------------------------------------------
 "Navigation
 "-------------------------------------------------
 Plugin 'majutsushi/tagbar'
+Plugin 'kshenoy/vim-signature'
+
+
+"-------------------------------------------------
+"Search source code
+"-------------------------------------------------
+Plugin 'rking/ag.vim'
+Plugin 'Chun-Yang/vim-action-ag'
+
 
 "-------------------------------------------------
 "Editing
 "-------------------------------------------------
 Plugin 'tpope/vim-commentary'
-Plugin 'rking/ag.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'tpope/vim-repeat'
 Plugin 'raimondi/delimitmate'
@@ -52,6 +67,14 @@ Plugin 'junegunn/goyo.vim'
 "-------------------------------------------------
 Plugin 'tpope/vim-fugitive'
 
+
+"-------------------------------------------------
+"Syntax Checking
+"-------------------------------------------------
+Plugin 'w0rp/ale'
+
+
+
 "-------------------------------------------------
 "Powerline and airlines
 "-------------------------------------------------
@@ -65,4 +88,5 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'pangloss/vim-javascript'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'mattn/emmet-vim'
+
 
