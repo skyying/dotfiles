@@ -231,7 +231,6 @@ let g:airline_theme='wombat'
 " YouCompeleteMe menu style
 hi Pmenu ctermfg=0 ctermbg=255 cterm=NONE guifg=NONE guibg=#eeeeee gui=NONE
 hi PmenuSel ctermfg=0 ctermbg=120 cterm=NONE guifg=NONE guibg=#87ff87 gui=NONE
-hi Visual guibg=#AAAAAA
 
 
 "================ Change Cursor Shape In Different Mode ====================
@@ -266,6 +265,8 @@ augroup End
 "================ Auto Sourcing .vimcr ===============
 if has("autocmd")
     autocmd! bufwritepost .vimrc source $MYVIMRC
+    "a bash script to collect my dotfiles
+    "remove line below
     autocmd! bufwritepost .vimrc :! bash ./mvdotfiles.sh
 endif
 
