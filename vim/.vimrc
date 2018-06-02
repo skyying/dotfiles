@@ -42,8 +42,8 @@ set wildmenu                                                 " show a navigable 
 set wildmode=longest,list,full
 set showcmd
 set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc " search ignore
-set shortmess=a
 set cmdheight=2
+set shortmess=a
 set lazyredraw                                               " Don't redraw when we don't have to
 set regexpengine=1
 set magic                                                    " Enable extended regexes
@@ -66,7 +66,7 @@ set softtabstop=4 " insert mode tab and backspace use n spaces
 set tabstop=4     " actual tabs occupy n
 set shiftwidth=4  " normal mode indentation commands use n spaces
 set backspace=2   " Fix broken backspace in some setups
-setl tw=80
+setl tw=90
 
 
 "================ Key mapping ====================
@@ -76,16 +76,24 @@ map <space> <leader>
 inoremap jk <ESC>
 inoremap kj <ESC>
 
+
 "Command line
 nnoremap ; :
 vnoremap ; :
+nnoremap : ;
+vnoremap : ;
 
 "Apply Marco with Q, qq to record, q to stop, Q to apply
 nnoremap Q @q
 
 "Formatting, editing
 noremap <C-f> maggvG=jj`a
-noremap <leader>p viwp 
+
+" make Y to copy to the ned
+noremap Y y$ 
+noremap <leader>p viw"0p 
+noremap <leader>py "0p 
+
 
 
 "Insert new Line
@@ -94,9 +102,12 @@ map <leader><CR> o<ESC>
 "Move to begining of the line
 nnoremap B ^
 nnoremap E $
-nnoremap $ <nop>
-nnoremap ^ <nop>
+vnoremap B ^
+vnoremap E $
 
+"jump to end of block"
+nnoremap <c-1> %
+vnoremap <c-1> %
 
 "Search and replace word under cursor
 nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
@@ -109,22 +120,26 @@ cnoremap jk <esc><esc>
 noremap zz :q<CR>
 noremap <leader><space> :w<CR>
 noremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <Leader>ec :edit <C-R>=get(split(globpath(&runtimepath, 'colors/' . g:colors_name . '.vim'), "\n"), 0, '')<CR><CR>
 noremap <leader>sv :source $MYVIMRC<cr>
 
 "Scrolling
-noremap <C-e> 3<C-e>
-noremap <C-y> 3<C-y>
+noremap <C-e> 5<C-e>
+noremap <C-y> 5<C-y>
 noremap <C-j> L10j
 noremap <C-k> H10k
+vnoremap <C-j> L10j
+vnoremap <C-k> H10k
 
 "Move line down/up
-nnoremap <leader><C-j> :m .+1<CR>==
-nnoremap <leader><C-k> :m .-2<CR>==
-inoremap <C-j> <ESC>:m .+1<CR>==gi
-inoremap <C-k> <ESC>:m .-2<CR>==gi
+nnoremap <leader>ej :m .+1<CR>==
+nnoremap <leader>ek :m .-2<CR>==
+"inoremap <C-j> <ESC>:m .+1<CR>==gi
+"inoremap <C-k> <ESC>:m .-2<CR>==gi
 
 "For jump to where marks are instead of line
 nnoremap ' `
+
 
 "Productivity
 inoremap <BS> <nop>
@@ -137,8 +152,8 @@ vnoremap k gk
 
 
 "ALE next/previous error
-noremap <silent> <leader>gj :ALENext<cr>
-noremap <silent> <leader>gk :ALEPrevious<cr>
+noremap <silent> <leader>en :ALENext<cr>
+noremap <silent> <leader>ep :ALEPrevious<cr>
 
 
 "Turn off hilight search result
@@ -190,11 +205,16 @@ nnoremap <leader>a :Ag
 let g:ctrlp_match_window = 'order:ttb,max:20'
 let g:NERDSpaceDelims=1
 let g:gitgutter_enabled = 0
-let g:hardtime_default_on = 0
-let g:hardtime_allow_different_key = 1
-let g:user_emmet_install_global = 0
+let g:user_emmet_mode='a'
 let g:user_emmet_leader_key = '<tab>'
-" let g:user_emmet_expandabbr_key='<tab>'
+let g:user_emmet_expandabbr_key='<tab>'
+let g:user_emmet_settings = {
+\  'javascript.jsx' : {
+\      'extends': 'jsx',
+\      'quote_char': "'",
+\  },
+\}
+
 
 "Snippets
 let g:UltiSnipsSnippetDirectories = ['UltiSnips']
@@ -211,6 +231,7 @@ let g:airline_theme='wombat'
 " YouCompeleteMe menu style
 hi Pmenu ctermfg=0 ctermbg=255 cterm=NONE guifg=NONE guibg=#eeeeee gui=NONE
 hi PmenuSel ctermfg=0 ctermbg=120 cterm=NONE guifg=NONE guibg=#87ff87 gui=NONE
+hi Visual guibg=#AAAAAA
 
 
 "================ Change Cursor Shape In Different Mode ====================
@@ -225,12 +246,12 @@ endif
 
 "====== Fix Delay When Typing In Insert Mode===========
 if !has('gui_running')
-    set ttimeoutlen=150
+    set ttimeoutlen=80
     "ttimeoutlen is fo keycode delay
     augroup FastEscape
         autocmd!
         " timeoutlen is for mapping delay
-        au InsertEnter * set timeoutlen=150
+        au InsertEnter * set timeoutlen=80
         au InsertLeave * set timeoutlen=1000
     augroup END
 endif
@@ -238,15 +259,14 @@ endif
 "================ Javascript ========================
 augroup jsSnippet
     autocmd FileType javascript noremap <leader>ic yiwOconsole.log('<esc>pi',<esc>pi);<esc>
-    autocmd FileType javascript noremap <c-f> :call JsBeautify()<CR>
+    autocmd FileType javascript noremap <c-f> :call JsBeautify()<cr>
 augroup End
+
 
 "================ Auto Sourcing .vimcr ===============
 if has("autocmd")
     autocmd! bufwritepost .vimrc source $MYVIMRC
+    autocmd! bufwritepost .vimrc :! bash ./mvdotfiles.sh
 endif
-
-
-
 
 

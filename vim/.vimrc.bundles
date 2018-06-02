@@ -1,14 +1,8 @@
-
-"-------------------------------------------------
-"Learning VIM
-"-------------------------------------------------
-Plugin 'takac/vim-hardtime'
-Plugin 'wikitopian/hardmode'
-
 "-------------------------------------------------
 "Color scheme
 "-------------------------------------------------
 Plugin 'crusoexia/vim-monokai'
+
 
 "-------------------------------------------------
 "Plugin Management
@@ -18,22 +12,20 @@ Plugin 'VundleVim/Vundle.vim'
 "-------------------------------------------------
 "Completion and snippets
 "-------------------------------------------------
-Plugin 'SirVer/ultisnips'
 Plugin 'valloric/youcompleteme'
+Plugin 'SirVer/ultisnips'
 
 "-------------------------------------------------
 "Browsing files
 "-------------------------------------------------
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'junegunn/fzf'
 
 "-------------------------------------------------
-"tmux, terminal
+"tmux, terminal, shell
 "-------------------------------------------------
 Plugin 'benmills/vimux'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'epeli/slimux'
+Plugin 'skywind3000/asyncrun.vim'
 
 "-------------------------------------------------
 "Navigation
@@ -60,7 +52,6 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/Align'
 Plugin 'reedes/vim-pencil'
 Plugin 'junegunn/goyo.vim'
-"Plugin 'tpope/vim-ragtag'
 
 "-------------------------------------------------
 "Git
@@ -74,7 +65,6 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'w0rp/ale'
 
 
-
 "-------------------------------------------------
 "Powerline and airlines
 "-------------------------------------------------
@@ -86,7 +76,7 @@ Plugin 'vim-airline/vim-airline'
 "language - javascript/html/css
 "-------------------------------------------------
 Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'mattn/emmet-vim'
-
 
