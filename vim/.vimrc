@@ -1,4 +1,3 @@
-
 set nocompatible
 
 "================ Configure Vundle ====================
@@ -11,11 +10,40 @@ endif
 call vundle#end()
 
 
+
+
 "================ UI and Color ====================
-colorscheme monokai
 syntax enable " enable syntax highlighting
 set t_Co=256
-set textwidth=79 
+set textwidth=80
+set cmdheight=1
+
+" customize my color scheme"
+
+colorscheme chien 
+"colorscheme monvkai
+hi Normal guibg=NONE ctermbg=NONE
+hi WarningMsg guibg=NONE ctermfg=159
+hi ErrorMsg guibg=NONE ctermbg=NONE ctermfg=201
+hi Visual ctermfg=59 ctermbg=220
+hi SignColumn ctermbg=NONE ctermfg=69 guibg=NONE guifg=#5f87ff
+hi LineNr ctermbg=NONE
+hi CursorLineNr ctermbg=NONE
+hi VertSplit ctermbg=NONE guibg=NONE
+hi Error ctermbg=NONE
+hi ErrorMsg cterm=NONE gui=NONE 
+hi SignatureMarkText ctermfg=204 ctermbg=None
+
+"hi Visual  guifg=#87d7ff guibg=
+" hi Visual guibg=141
+" hi LineNr guibg=NONE
+
+"highlight clear LineNr
+
+hi Pmenu ctermfg=15 ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
+hi PmenuSel ctermfg=15 ctermbg=69 cterm=NONE guifg=NONE guibg=NONE gui=NONE
+
+
 
 
 " ================ General Config ====================
@@ -54,6 +82,10 @@ set wildignore+=.DS_Store
 set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js
 set wildignore+=*/bower_components/*,*/node_modules/*
 set wildignore+=*/smarty/*,*/vendor/*,*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*,*/log/*,*/tmp/*,*/build/*,*/ckeditor/*,*/doc/*,*/source_maps/*,*/dist/*
+set noshowmode
+set ch=1 "let commandline only have one line
+"set colorcolumn+=1
+
 
 
 
@@ -83,6 +115,9 @@ vnoremap ; :
 nnoremap : ;
 vnoremap : ;
 
+
+
+
 "Apply Marco with Q, qq to record, q to stop, Q to apply
 nnoremap Q @q
 
@@ -92,18 +127,43 @@ noremap <C-f> maggvG=jj`a
 " make Y to copy to the ned
 noremap Y y$ 
 noremap <leader>p viw"0p 
-noremap <leader>py "0p 
+noremap <leader>P "0p 
 
+
+inoremap jp ()<esc>i
+inoremap jpp ();<esc>hi
+inoremap ja []<esc>i
+inoremap jb {}<esc>i
+inoremap jo jo 
+inoremap jr <bar><bar>
+inoremap j' ""<esc>i
+inoremap jn && 
+inoremap je =
+inoremap = <nop>
+inoremap ka +
+inoremap ks -
+inoremap jz 0
+inoremap aa <c-o>A 
+inoremap nn <c-o>li
+inoremap ii <c-o>I
+
+
+iab tr true
+iab le length
+iab fl false
+iab add +
+iab mi - 
+iab bra {}
+iab rt return
+iab cn const
 
 
 "Insert new Line
 map <leader><CR> o<ESC>
 
 "Move to begining of the line
-nnoremap B ^
-nnoremap E $
-vnoremap B ^
-vnoremap E $
+noremap B ^
+noremap E $
 
 "jump to end of block"
 nnoremap <c-1> %
@@ -112,7 +172,7 @@ vnoremap <c-1> %
 "Search and replace word under cursor
 nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
 vnoremap <leader>* "hy:%s/\V<C-r>h//<left>
-
+  
 
 "Quit/save/reload files
 cnoremap ql q!<CR>
@@ -122,18 +182,22 @@ noremap <leader><space> :w<CR>
 noremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <Leader>ec :edit <C-R>=get(split(globpath(&runtimepath, 'colors/' . g:colors_name . '.vim'), "\n"), 0, '')<CR><CR>
 noremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <Leader>es :edit ~/.vim/UltiSnips/javascript.snippets<CR> 
 
 "Scrolling
+noremap <C-d> 5<C-y>
 noremap <C-e> 5<C-e>
-noremap <C-y> 5<C-y>
-noremap <C-j> L10j
+noremap <c-b> %
+noremap <C-j> L5j
 noremap <C-k> H10k
-vnoremap <C-j> L10j
-vnoremap <C-k> H10k
+" noremap <C-j> L10j
+" noremap <C-k> H10k
+" vnoremap <C-j> L10j
+" vnoremap <C-k> H10k
 
 "Move line down/up
-nnoremap <leader>ej :m .+1<CR>==
-nnoremap <leader>ek :m .-2<CR>==
+" nnoremap <leader>ej :m .+1<CR>==
+" nnoremap <leader>ek :m .-2<CR>==
 "inoremap <C-j> <ESC>:m .+1<CR>==gi
 "inoremap <C-k> <ESC>:m .-2<CR>==gi
 
@@ -197,7 +261,6 @@ endif
 
 "================ Plugin ag.vim configuration ====================
 let g:ale_sign_error = '*' 
-nnoremap <leader>a :Ag 
 
 
 
@@ -205,10 +268,15 @@ nnoremap <leader>a :Ag
 let g:ctrlp_match_window = 'order:ttb,max:20'
 let g:NERDSpaceDelims=1
 let g:gitgutter_enabled = 0
-let g:user_emmet_mode='a'
-let g:user_emmet_leader_key = '<tab>'
-let g:user_emmet_expandabbr_key='<tab>'
-let g:user_emmet_settings = {
+
+"Emmet
+" use <c-i> insert mode to expand
+"Allow emmet in all mode 
+let g:user_emmet_mode='a'  
+let g:user_emmet_leader_key='<c-i>'
+imap <expr> <c-i> emmet#expandAbbrIntelligent("<c-i>")
+"Allow Jsx Syntax in javascript
+let g:user_emmet_settings={ 
 \  'javascript.jsx' : {
 \      'extends': 'jsx',
 \      'quote_char': "'",
@@ -225,12 +293,17 @@ let g:UltiSnipsJumpForwardTrigger="<c-l>"
 " Java Syntastic Check
 let g:syntastic_java_checkers = []
 
-" Airline Theme 
-let g:airline_theme='wombat'
-
+"Airline Themte 
+"
+" let g:airline_theme="wombat"
+let g:airline_theme="deus"
+"let g:airline_theme="base16_spacemacs"
 " YouCompeleteMe menu style
-hi Pmenu ctermfg=0 ctermbg=255 cterm=NONE guifg=NONE guibg=#eeeeee gui=NONE
-hi PmenuSel ctermfg=0 ctermbg=120 cterm=NONE guifg=NONE guibg=#87ff87 gui=NONE
+"let it works in css and html
+let g:ycm_semantic_triggers = {
+    \   'css': [ 're!^\s{4}', 're!:\s+'],
+    \   'html': [ '</' ],
+    \ }
 
 
 "================ Change Cursor Shape In Different Mode ====================
@@ -245,29 +318,51 @@ endif
 
 "====== Fix Delay When Typing In Insert Mode===========
 if !has('gui_running')
-    set ttimeoutlen=80
+    set ttimeoutlen=150
     "ttimeoutlen is fo keycode delay
     augroup FastEscape
         autocmd!
         " timeoutlen is for mapping delay
-        au InsertEnter * set timeoutlen=80
+        au InsertEnter * set timeoutlen=150
         au InsertLeave * set timeoutlen=1000
     augroup END
 endif
 
-"================ Javascript ========================
-augroup jsSnippet
-    autocmd FileType javascript noremap <leader>ic yiwOconsole.log('<esc>pi',<esc>pi);<esc>
-    autocmd FileType javascript noremap <c-f> :call JsBeautify()<cr>
-augroup End
 
+"================ Javascript ========================
+augroup JSspeedy
+    "select varaible or things you want to print, make a console go it. 
+    autocmd FileType javascript noremap <leader>co mzoconsole.log("<esc>"0pa", <esc>"0pa);<esc>'z
+    "autocmd FileType javascript let g:airline_theme="deus"
+   " autocmd FileType javascript inoremap or || 
+    " autocmd Filetype javascript inoremap an &&
+    "for JSX syntax usage, selct a word, and wrap it with < /> from , div to <div /> 
+    autocmd FileType javascript noremap <leader>er ciw<<esc>pa /><esc>
+augroup End
 
 "================ Auto Sourcing .vimcr ===============
 if has("autocmd")
     autocmd! bufwritepost .vimrc source $MYVIMRC
-    "a bash script to collect my dotfiles
-    "remove line below
-    autocmd! bufwritepost .vimrc :! bash ./mvdotfiles.sh
+    "remove line below ,this is my bash script to collect dotfiles
+    autocmd! bufwritepost .vimrc :!bash ./mvdotfiles.sh
 endif
+
+
+"================ Allow JSX ===============
+let g:jsx_ext_required = 0  "Allow JSX in nmormal JS files
+let g:vim_g_open_command = "xdg-open"
+
+"================ punction ===============
+
+
+"check words belong to which highlight group
+nmap <C-S-P> :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
 
 
