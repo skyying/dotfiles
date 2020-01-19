@@ -1,6 +1,4 @@
-
-
-# plugin list
+# Plugins
 
 ## search
 * ack.vim
@@ -13,7 +11,12 @@
 * vim-endwise
 * vim-ruby
 
-## other
-* vim-sensible
+## code formatting
+* google/vim-codefmt
+  - dependency
+	* google/vim-maktaba
+	* google/vim-glaive
+	* `pip3 install yapf`
+
 
 

@@ -16,9 +16,9 @@ colorscheme edge
 hi Comment ctermfg=235 ctermbg=8
 
 " indent and tab
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 set relativenumber
 
@@ -60,8 +60,6 @@ noremap E $
 cnoremap ql q!<CR>
 cnoremap jk <esc><esc>
 
-
-
 " copy between visual mode
 "vmap <c-x> :!pbcopy<CR>  
 "vmap <c-c> :w !pbcopy<CR>
@@ -91,4 +89,14 @@ imap <C-v> <ESC>"+pa
 " ack.vim setup
 let g:ackprg = 'ag --vimgrep'
 let g:ackprg = 'ag --nogroup --nocolor --column'
+
+call glaive#Install()
+
+" https://github.com/google/vim-codefmt 
+augroup autoformat_settings
+  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+  autocmd FileType go AutoFormatBuffer gofmt
+  autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
+  autocmd FileType python AutoFormatBuffe yapf
+augroup END
 
