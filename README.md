@@ -1,5 +1,9 @@
 
 
+### Install
+create symbolic link for dotfiles
+
+
 ### Editor
 #### vim
 1. Use latest vim
